@@ -181,18 +181,18 @@
     /* ── Styles FRAGMENTS ONLY — plus gros, plus gras ──────────── */
     const FRAG_LABEL: React.CSSProperties = {
       display: "block",
-      fontSize: "11px",
-      fontWeight: 700,
+      fontSize: "10px",
+      fontWeight: 600,
       letterSpacing: "0.08em",
       textTransform: "uppercase",
       color: "rgba(255,255,255,0.4)",
-      marginBottom: "6px",
+      marginBottom: "5px",
     };
     const FRAG_PILL = (active: boolean, color: string): React.CSSProperties => ({
-      padding: "7px 14px",
+      padding: "5px 11px",
       borderRadius: "999px",
-      fontSize: "12px",
-      fontWeight: active ? 700 : 500,
+      fontSize: "11px",
+      fontWeight: active ? 600 : 500,
       letterSpacing: "0.02em",
       color: active ? color : "rgba(255,255,255,0.55)",
       background: active ? `${color}1A` : "rgba(255,255,255,0.05)",
@@ -627,10 +627,10 @@
                     <button
                       onClick={handleRandomize}
                       disabled={fragments.length === 0}
-                      className="w-full py-3 rounded-2xl text-black transition-all duration-200 active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed"
+                      className="w-full py-2 rounded-2xl text-black transition-all duration-200 active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed"
                       style={{
-                        fontSize: "13px",
-                        fontWeight: 800,
+                        fontSize: "11px",
+                        fontWeight: 700,
                         letterSpacing: "0.05em",
                         textTransform: "uppercase",
                         background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
@@ -755,9 +755,9 @@
 
                   {/* VUE B : Résultats */}
                   {showResults && (
-                    <div className="h-full flex flex-col explore-view-in">
-                      {/* Titre sticky */}
-                      <div className="flex-shrink-0 px-6 pt-1 pb-3 sticky top-0 z-[5]" style={{ background: "rgba(0, 0, 0, 0.82)" }}>
+                    <div className="h-full flex flex-col explore-view-in px-6">
+                      {/* Header sticky */}
+                      <div className="flex-shrink-0 pt-1 pb-3" style={{ position: "sticky", top: 0, zIndex: 2, background: "rgba(0,0,0,0.82)" }}>
                         <h3 style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "6px" }}>
                           {t.frag_results}
                         </h3>
@@ -767,12 +767,12 @@
                         <div style={{ marginTop: "12px", height: "1px", background: "linear-gradient(90deg, transparent 5%, rgba(255,215,0,0.15) 50%, transparent 95%)" }} />
                       </div>
                       {/* Liste scrollable avec fade */}
-                      <div className="flex-1 min-h-0 overflow-y-auto story-scroll-gold scroll-fade-gold px-6 pb-5">
+                      <div className="flex-1 min-h-0 overflow-y-auto explore-scroll-gold scroll-fade-bottom pb-5 pr-1">
                         {filtered.length > 0 && (
                           <div key={searchKey} className="flex flex-col gap-2">
                             {filtered.map((f, i) => {
                               const emoji = MOOD_EMOJI[f.mood] || "💫";
-                              const titleStr = f.title || "Sans titre";
+                              const titleStr = f.title || t.misc_untitled;
                               const location = [f.city, f.country].filter((s) => s && s.trim()).join(", ");
                               return (
                                 <button
@@ -840,23 +840,23 @@
 
                 {/* Titre — compact, sans description */}
                 {gameStatus === "idle" && (
-                  <div className="flex items-center justify-center gap-2" style={{ padding: "6px 0 2px" }}>
-                    <span style={{ fontSize: "15px" }}>🏛️</span>
-                    <h3 style={{ fontSize: "13px", fontWeight: 700, color: "rgba(255,255,255,0.9)", letterSpacing: "0.02em" }}>
+                  <div className="flex items-center justify-center gap-1.5" style={{ padding: "4px 0 2px" }}>
+                    <span style={{ fontSize: "11px" }}>🏛️</span>
+                    <h3 style={{ fontSize: "10px", fontWeight: 600, color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em", textTransform: "uppercase" }}>
                       {t.quiz_title}
                     </h3>
                   </div>
                 )}
                   </div>
 
-                  {/* ── Corps — remplir tout l'espace ─────────────────── */}
-                  <div className={`flex-1 min-h-0 px-6 ${gameStatus === "idle" ? "overflow-hidden" : "overflow-y-auto story-scroll-violet scroll-fade-violet"}`}>
+                  {/* ── Corps — scrollable identique à StoryCard ─────── */}
+                  <div className="flex-1 min-h-0 overflow-y-auto explore-scroll-violet scroll-fade-bottom px-6 pr-4">
 
               {/* ─────────────────────────────────────────────────
                   MODE IDLE — Menu de paramétrage (compact, justify-between)
                  ───────────────────────────────────────────────── */}
               {gameStatus === "idle" && (
-                <div className="h-full flex flex-col justify-between pt-2 pb-4">
+                <div className="h-full flex flex-col justify-between pt-2 pb-8">
 
                   {/* Difficulté — deux boutons avec sous-titres */}
                   <div>
@@ -869,10 +869,10 @@
                           <button
                             key={d}
                             onClick={() => setQuizDifficulty(d)}
-                            className="flex-1 py-2 rounded-lg transition-all duration-200 text-center"
+                            className="flex-1 py-1.5 rounded-lg transition-all duration-200 text-center"
                             style={{
-                              fontSize: "11px",
-                              fontWeight: active ? 700 : 400,
+                              fontSize: "10px",
+                              fontWeight: active ? 600 : 400,
                               color: active ? (isEasy ? "#4FC3F7" : "#FF4444") : "rgba(255,255,255,0.4)",
                               background: active
                                 ? (isEasy ? "rgba(79,195,247,0.1)" : "rgba(255,68,68,0.1)")
@@ -882,10 +882,10 @@
                                 : "1px solid rgba(255,255,255,0.06)",
                             }}
                           >
-                            <div>{isEasy ? `🎯 ${t.quiz_easy}` : `🔥 ${t.quiz_expert}`}</div>
-                            <div style={{ fontSize: "8px", fontWeight: 400, color: "rgba(255,255,255,0.25)", marginTop: "2px", lineHeight: 1.3 }}>
-                              {isEasy ? t.quiz_easy_desc : t.quiz_expert_desc}
-                            </div>
+                            {isEasy ? `🎯 ${t.quiz_easy}` : `🔥 ${t.quiz_expert}`}
+                            <span style={{ fontSize: "8px", fontWeight: 400, color: "rgba(255,255,255,0.25)", marginLeft: "4px" }}>
+                              ({isEasy ? t.quiz_easy_desc : t.quiz_expert_desc})
+                            </span>
                           </button>
                         );
                       })}
@@ -971,7 +971,7 @@
                   </div>
 
                   {/* Bloc bas : Bouton Lancer + Collection — collés en bas */}
-                  <div className="flex flex-col gap-2 pt-2">
+                  <div className="flex flex-col gap-2 pt-3">
                     {/* Smart Loading spinner */}
                     {isWorldLoading && (
                       <div className="flex items-center justify-center gap-2 py-1" style={{ animation: "quizToastIn 0.3s ease-out" }}>

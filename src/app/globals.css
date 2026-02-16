@@ -204,24 +204,56 @@ body {
   scrollbar-color: rgba(187, 134, 252, 0.3) transparent;
 }
 
-/* ── Explore Panel — scrollbar discrète + stagger cards ──── */
-.explore-results-scroll::-webkit-scrollbar {
-  width: 4px;
+/* ── Explore Panel — scrollbar luxe identique à StoryCard ──── */
+
+/* Gold (Fragments) */
+.explore-scroll-gold::-webkit-scrollbar { width: 3px; }
+.explore-scroll-gold::-webkit-scrollbar-track { background: transparent; }
+.explore-scroll-gold::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0);
+  border-radius: 99px;
+  transition: background 0.3s;
 }
-.explore-results-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.explore-results-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 215, 0, 0.15);
-  border-radius: 4px;
-}
-.explore-results-scroll::-webkit-scrollbar-thumb:hover {
+.explore-scroll-gold:hover::-webkit-scrollbar-thumb {
   background: rgba(255, 215, 0, 0.3);
 }
-/* Firefox */
-.explore-results-scroll {
+.explore-scroll-gold:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.5);
+}
+.explore-scroll-gold {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 215, 0, 0.15) transparent;
+  scrollbar-color: transparent transparent;
+}
+.explore-scroll-gold:hover {
+  scrollbar-color: rgba(255, 215, 0, 0.3) transparent;
+}
+
+/* Violet (History) */
+.explore-scroll-violet::-webkit-scrollbar { width: 3px; }
+.explore-scroll-violet::-webkit-scrollbar-track { background: transparent; }
+.explore-scroll-violet::-webkit-scrollbar-thumb {
+  background: rgba(187, 134, 252, 0);
+  border-radius: 99px;
+  transition: background 0.3s;
+}
+.explore-scroll-violet:hover::-webkit-scrollbar-thumb {
+  background: rgba(187, 134, 252, 0.3);
+}
+.explore-scroll-violet:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(187, 134, 252, 0.5);
+}
+.explore-scroll-violet {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.explore-scroll-violet:hover {
+  scrollbar-color: rgba(187, 134, 252, 0.3) transparent;
+}
+
+/* Dégradé de fondu en bas — suggère du contenu à découvrir */
+.scroll-fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
 }
 
 @keyframes exploreCardIn {
@@ -239,16 +271,6 @@ body {
 }
 .explore-view-in {
   animation: exploreViewIn 0.25s ease-out both;
-}
-
-/* ── Scroll fade — dégradé en bas pour suggérer du contenu ── */
-.scroll-fade-gold {
-  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
-}
-.scroll-fade-violet {
-  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
 }
 
 /* ── StoryCard slide-in (premium fade + scale + slide) ──── */
