@@ -2358,11 +2358,11 @@ export default function MapGlobe({
 
       {/* ── Barre de contrôle — Style Gotham ──────────────────── */}
       <nav
-        className="z-[100] flex items-center gap-2 px-4 py-3 rounded-3xl border border-white/[0.08] select-none tabbar-enter"
+        className="z-[100] flex items-center gap-1.5 px-3 py-2 rounded-2xl border border-white/[0.08] select-none tabbar-enter"
         style={{
           position: "fixed",
-          top: "24px",
-          left: "24px",
+          top: "20px",
+          left: "20px",
           fontFamily: "'Montserrat', 'Inter', system-ui, sans-serif",
           background: "rgba(0, 0, 0, 0.70)",
           backdropFilter: "blur(24px) saturate(1.5)",
@@ -2372,37 +2372,37 @@ export default function MapGlobe({
         {/* ── Bouton principal : Leave a fragment ─────────────── */}
         <button
           onClick={enterTargetingMode}
-          className={`flex items-center gap-2.5 rounded-2xl transition-all duration-200 active:scale-[0.97] ${
+          className={`flex items-center gap-2 rounded-xl transition-all duration-200 active:scale-[0.97] ${
             isTargeting
               ? "bg-amber-400 text-black"
               : "bg-white text-black hover:bg-gray-100"
           }`}
           style={{
-            padding: "12px 24px",
-            fontSize: "13px",
+            padding: "8px 18px",
+            fontSize: "11px",
             fontWeight: 600,
             letterSpacing: "0.06em",
             textTransform: "uppercase",
           }}
         >
-          <span className="text-base leading-none">{isTargeting ? "\u271A" : "+"}</span>
+          <span className="text-sm leading-none">{isTargeting ? "\u271A" : "+"}</span>
           {isTargeting ? "Choisir un lieu…" : "Leave a fragment"}
         </button>
 
         {/* Séparateur */}
-        <div className="w-px bg-white/10 mx-1" style={{ height: "28px" }} />
+        <div className="w-px bg-white/10 mx-0.5" style={{ height: "22px" }} />
 
         {/* ── Bouton Explore ──────────────────────────────────── */}
         <button
           onClick={() => { setShowExplore((v) => !v); setShowViewMenu(false); }}
-          className={`rounded-2xl transition-all duration-200 ${
+          className={`rounded-xl transition-all duration-200 ${
             showExplore
               ? "text-amber-400 bg-amber-400/10"
               : "text-white/70 hover:text-white hover:bg-white/[0.06]"
           }`}
           style={{
-            padding: "12px 20px",
-            fontSize: "13px",
+            padding: "8px 14px",
+            fontSize: "11px",
             fontWeight: 500,
             letterSpacing: "0.05em",
             textTransform: "uppercase",
@@ -2412,10 +2412,10 @@ export default function MapGlobe({
         </button>
 
         {/* Séparateur */}
-        <div className="w-px bg-white/10 mx-1" style={{ height: "28px" }} />
+        <div className="w-px bg-white/10 mx-0.5" style={{ height: "22px" }} />
 
         {/* ── Segmented Control : Tous / Fragments / Histoire ──── */}
-        <div className="flex items-center gap-1" style={{ padding: "4px 6px" }}>
+        <div className="flex items-center gap-0.5" style={{ padding: "2px 4px" }}>
           {(["all", "fragments", "history"] as DataMode[]).map((mode) => {
             const active = dataMode === mode;
             const label = mode === "all" ? "Tous" : mode === "fragments" ? "Fragments" : "Histoire";
@@ -2425,8 +2425,8 @@ export default function MapGlobe({
                 onClick={() => { setDataMode(mode); setShowViewMenu(false); }}
                 className="relative transition-all duration-200"
                 style={{
-                  padding: "8px 14px",
-                  fontSize: "12px",
+                  padding: "6px 10px",
+                  fontSize: "10px",
                   fontWeight: active ? 600 : 400,
                   letterSpacing: "0.05em",
                   textTransform: "uppercase",
@@ -2455,16 +2455,16 @@ export default function MapGlobe({
         </div>
 
         {/* Séparateur */}
-        <div className="w-px bg-white/10 mx-1" style={{ height: "28px" }} />
+        <div className="w-px bg-white/10 mx-0.5" style={{ height: "22px" }} />
 
         {/* ── Dropdown Map View ────────────────────────────────── */}
         <div className="relative">
           <button
             onClick={() => setShowViewMenu((v) => !v)}
-            className="flex items-center gap-2 rounded-2xl transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06]"
+            className="flex items-center gap-1.5 rounded-xl transition-all duration-200 text-white/70 hover:text-white hover:bg-white/[0.06]"
             style={{
-              padding: "12px 20px",
-              fontSize: "13px",
+              padding: "8px 14px",
+              fontSize: "11px",
               fontWeight: 500,
               letterSpacing: "0.05em",
               textTransform: "uppercase",
@@ -2473,7 +2473,7 @@ export default function MapGlobe({
             Map View
             {/* Chevron */}
             <svg
-              width="10" height="6" viewBox="0 0 10 6" fill="none"
+              width="8" height="5" viewBox="0 0 10 6" fill="none"
               className={`transition-transform duration-200 ${showViewMenu ? "rotate-180" : ""}`}
             >
               <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -2483,7 +2483,7 @@ export default function MapGlobe({
           {/* ── Menu flottant ──────────────────────────────────── */}
           {showViewMenu && (
             <div
-              className="absolute top-full mt-3 left-0 min-w-[200px] rounded-2xl overflow-hidden"
+              className="absolute top-full mt-2 left-0 min-w-[180px] rounded-xl overflow-hidden"
               style={{
                 fontFamily: "'Montserrat', 'Inter', system-ui, sans-serif",
                 background: "rgba(0, 0, 0, 0.80)",
@@ -2506,18 +2506,18 @@ export default function MapGlobe({
                   <button
                     key={key}
                     onClick={() => { setViewMode(key); setShowViewMenu(false); }}
-                    className="w-full text-left transition-all duration-150 flex items-center gap-3 group"
+                    className="w-full text-left transition-all duration-150 flex items-center gap-2.5 group"
                     style={{
-                      padding: "12px 16px",
+                      padding: "10px 14px",
                       borderTop: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none",
                       background: active ? "rgba(255, 215, 0, 0.08)" : "transparent",
                     }}
                   >
-                    <span style={{ fontSize: "16px", lineHeight: 1 }}>{icon}</span>
+                    <span style={{ fontSize: "14px", lineHeight: 1 }}>{icon}</span>
                     <div className="flex flex-col">
                       <span
                         style={{
-                          fontSize: "13px",
+                          fontSize: "11px",
                           fontWeight: active ? 600 : 400,
                           letterSpacing: "0.03em",
                           color: active ? "#FFD700" : "rgba(255,255,255,0.8)",
@@ -2527,7 +2527,7 @@ export default function MapGlobe({
                       </span>
                       <span
                         style={{
-                          fontSize: "10px",
+                          fontSize: "9px",
                           fontWeight: 400,
                           letterSpacing: "0.02em",
                           color: "rgba(255,255,255,0.35)",
@@ -2538,7 +2538,7 @@ export default function MapGlobe({
                       </span>
                     </div>
                     {active && (
-                      <span className="ml-auto" style={{ color: "#FFD700", fontSize: "12px" }}>✓</span>
+                      <span className="ml-auto" style={{ color: "#FFD700", fontSize: "10px" }}>✓</span>
                     )}
                   </button>
                 );

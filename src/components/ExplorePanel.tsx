@@ -538,7 +538,7 @@
             </button>
 
             {/* ── Header avec onglets ────────────────────────────────── */}
-            <div className="flex-shrink-0 px-4 pt-4 pb-0">
+            <div className="flex-shrink-0 px-4 pt-8 pb-0">
               <div className="flex items-center gap-1 mb-3 px-2 pr-10">
                 {/* Onglet Fragments */}
                 <button
@@ -757,11 +757,11 @@
                   {showResults && (
                     <div className="h-full explore-results-scroll overflow-y-auto story-scroll-gold px-6 pb-5 explore-view-in">
                       <div className="pt-1 pb-3">
-                        <h3 style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "6px" }}>
+                        <h3 style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "6px" }}>
                           {t.frag_results}
                         </h3>
                         {summaryText && (
-                          <p style={{ fontSize: "13px", fontWeight: 500, color: "#FFD700", lineHeight: 1.5 }}>{summaryText}</p>
+                          <p style={{ fontSize: "12px", fontWeight: 500, color: "#FFD700", lineHeight: 1.5 }}>{summaryText}</p>
                         )}
                         <div style={{ marginTop: "12px", height: "1px", background: "linear-gradient(90deg, transparent 5%, rgba(255,215,0,0.15) 50%, transparent 95%)" }} />
                       </div>
@@ -778,10 +778,10 @@
                                 className="explore-card w-full text-left px-4 py-3 rounded-xl transition-all duration-150 hover:bg-white/[0.07]"
                                 style={{ background: "rgba(255,255,255,0.03)", animationDelay: `${i * 50}ms` }}
                               >
-                                <div style={{ fontSize: "13px", fontWeight: 600, color: "#FFD700", lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                <div style={{ fontSize: "12px", fontWeight: 600, color: "#FFD700", lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                                   {emoji} {titleStr}
                                 </div>
-                                <div style={{ fontSize: "11px", fontWeight: 400, color: "rgba(255,255,255,0.35)", marginTop: "3px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                <div style={{ fontSize: "10px", fontWeight: 400, color: "rgba(255,255,255,0.35)", marginTop: "3px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                                   {location && <span>{location} · </span>}
                                   <span>{f.year}</span>
                                 </div>
@@ -1014,10 +1014,10 @@
                         style={{
                           background: "rgba(187,134,252,0.06)",
                           border: "1px solid rgba(187,134,252,0.12)",
-                          fontSize: "13px",
+                          fontSize: "12px",
                           fontWeight: 300,
                           color: "rgba(255,255,255,0.8)",
-                          lineHeight: 1.7,
+                          lineHeight: 1.6,
                           letterSpacing: "0.01em",
                         }}
                       >
@@ -1237,7 +1237,7 @@
                         {quizResult.correct ? "🎉" : "😔"}
                       </div>
                       <h3 style={{
-                        fontSize: "17px",
+                        fontSize: "15px",
                         fontWeight: 700,
                         color: quizResult.correct ? "#FFD700" : "#FF4444",
                         textAlign: "center",
@@ -1400,9 +1400,9 @@
 
             {/* ── Footer persistant ─────────────────────────────────── */}
             <div
-              className="flex-shrink-0 px-5 py-2.5 flex items-center justify-center gap-1"
+              className="flex-shrink-0 px-5 py-2 flex items-center justify-center gap-1"
               style={{
-                fontSize: "11px",
+                fontSize: "10px",
                 fontWeight: 400,
                 letterSpacing: "0.03em",
                 color: "rgba(255,255,255,0.3)",
