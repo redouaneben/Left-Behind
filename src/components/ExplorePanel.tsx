@@ -755,8 +755,9 @@
 
                   {/* VUE B : Résultats */}
                   {showResults && (
-                    <div className="h-full explore-results-scroll overflow-y-auto story-scroll-gold px-6 pb-5 explore-view-in">
-                      <div className="pt-1 pb-3">
+                    <div className="h-full flex flex-col explore-view-in">
+                      {/* Titre sticky */}
+                      <div className="flex-shrink-0 px-6 pt-1 pb-3 sticky top-0 z-[5]" style={{ background: "rgba(0, 0, 0, 0.82)" }}>
                         <h3 style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "6px" }}>
                           {t.frag_results}
                         </h3>
@@ -765,36 +766,39 @@
                         )}
                         <div style={{ marginTop: "12px", height: "1px", background: "linear-gradient(90deg, transparent 5%, rgba(255,215,0,0.15) 50%, transparent 95%)" }} />
                       </div>
-                      {filtered.length > 0 && (
-                        <div key={searchKey} className="flex flex-col gap-2">
-                          {filtered.map((f, i) => {
-                            const emoji = MOOD_EMOJI[f.mood] || "💫";
-                            const titleStr = f.title || "Sans titre";
-                            const location = [f.city, f.country].filter((s) => s && s.trim()).join(", ");
-                            return (
-                              <button
-                                key={f.id}
-                                onClick={() => onFlyTo(f)}
-                                className="explore-card w-full text-left px-4 py-3 rounded-xl transition-all duration-150 hover:bg-white/[0.07]"
-                                style={{ background: "rgba(255,255,255,0.03)", animationDelay: `${i * 50}ms` }}
-                              >
-                                <div style={{ fontSize: "12px", fontWeight: 600, color: "#FFD700", lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                                  {emoji} {titleStr}
-                                </div>
-                                <div style={{ fontSize: "10px", fontWeight: 400, color: "rgba(255,255,255,0.35)", marginTop: "3px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                                  {location && <span>{location} · </span>}
-                                  <span>{f.year}</span>
-                                </div>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
-                      {filtered.length === 0 && (
-                        <div style={{ textAlign: "center", fontSize: "12px", color: "rgba(255,255,255,0.25)", padding: "32px 0", lineHeight: 1.7 }}>
-                          {t.frag_empty}
-                        </div>
-                      )}
+                      {/* Liste scrollable avec fade */}
+                      <div className="flex-1 min-h-0 overflow-y-auto story-scroll-gold scroll-fade-gold px-6 pb-5">
+                        {filtered.length > 0 && (
+                          <div key={searchKey} className="flex flex-col gap-2">
+                            {filtered.map((f, i) => {
+                              const emoji = MOOD_EMOJI[f.mood] || "💫";
+                              const titleStr = f.title || "Sans titre";
+                              const location = [f.city, f.country].filter((s) => s && s.trim()).join(", ");
+                              return (
+                                <button
+                                  key={f.id}
+                                  onClick={() => onFlyTo(f)}
+                                  className="explore-card w-full text-left px-4 py-3 rounded-xl transition-all duration-150 hover:bg-white/[0.07]"
+                                  style={{ background: "rgba(255,255,255,0.03)", animationDelay: `${i * 50}ms` }}
+                                >
+                                  <div style={{ fontSize: "12px", fontWeight: 600, color: "#FFD700", lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                    {emoji} {titleStr}
+                                  </div>
+                                  <div style={{ fontSize: "10px", fontWeight: 400, color: "rgba(255,255,255,0.35)", marginTop: "3px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                    {location && <span>{location} · </span>}
+                                    <span>{f.year}</span>
+                                  </div>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
+                        {filtered.length === 0 && (
+                          <div style={{ textAlign: "center", fontSize: "12px", color: "rgba(255,255,255,0.25)", padding: "32px 0", lineHeight: 1.7 }}>
+                            {t.frag_empty}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   )}
                 </>
@@ -846,7 +850,7 @@
                   </div>
 
                   {/* ── Corps — remplir tout l'espace ─────────────────── */}
-                  <div className="flex-1 min-h-0 overflow-hidden px-6">
+                  <div className={`flex-1 min-h-0 px-6 ${gameStatus === "idle" ? "overflow-hidden" : "overflow-y-auto story-scroll-violet scroll-fade-violet"}`}>
 
               {/* ─────────────────────────────────────────────────
                   MODE IDLE — Menu de paramétrage (compact, justify-between)
